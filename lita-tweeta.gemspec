@@ -2,10 +2,10 @@ Gem::Specification.new do |spec|
   spec.name          = "lita-tweeta"
   spec.version       = "0.0.1"
   spec.authors       = ["Tristan Chong"]
-  spec.email         = ["tristanchong@gmail.com"]
-  spec.description   = %q{TODO: Add a description}
-  spec.summary       = %q{TODO: Add a summary}
-  spec.homepage      = "TODO: Add a homepage"
+  spec.email         = ["ong@tristaneuan.ch"]
+  spec.description   = %q{A Lita handler that returns the author and text of a linked tweet.}
+  spec.summary       = %q{A Lita handler that returns the author and text of a linked tweet.}
+  spec.homepage      = "https://github.com/tristaneuan/lita-tweeta"
   spec.license       = "MIT"
   spec.metadata      = { "lita_plugin_type" => "handler" }
 
