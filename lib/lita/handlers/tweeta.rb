@@ -13,7 +13,8 @@ module Lita
         config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
       end
 
-      def initialize
+      def initialize(robot)
+        super
         @client = Twitter::REST::Client.new do |config|
           config.consumer_key = Lita.config.handlers.tweeta.consumer_key
           config.consumer_secret = Lita.config.handlers.tweeta.consumer_secret
