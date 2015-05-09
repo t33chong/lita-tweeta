@@ -12,7 +12,7 @@ module Lita
       route(/https:\/\/twitter.com\/\w+\/status\/(\d+)/i, :tweeta,
             command: false)
       route(/^tw(?:eet|itter)?\s+(\w+)/i, :user_tweet, command: true,
-            help: {t("help.tweeta_key") => t("tweeta_value")})
+            help: {t("help.tweeta_key") => t("help.tweeta_value")})
 
       def initialize(robot)
         super

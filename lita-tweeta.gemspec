@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-tweeta"
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.authors       = ["Tristan Chong"]
   spec.email         = ["ong@tristaneuan.ch"]
   spec.description   = %q{A Lita handler that displays a tweet for a given Twitter URL or username.}
