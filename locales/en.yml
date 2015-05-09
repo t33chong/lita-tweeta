@@ -2,3 +2,6 @@ en:
   lita:
     handlers:
       tweeta:
+        help:
+          tweeta_key: "tweet USERNAME"
+          tweeta_value: "Display the latest tweet by USERNAME."

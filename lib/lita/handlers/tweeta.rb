@@ -1,13 +1,18 @@
+require "date"
 require "twitter"
 
 module Lita
   module Handlers
     class Tweeta < Handler
+      config :consumer_key, type: String, required: true
+      config :consumer_secret, type: String, required: true
+      config :access_token, type: String, required: true
+      config :access_token_secret, type: String, required: true
+
       route(/https:\/\/twitter.com\/\w+\/status\/(\d+)/i, :tweeta,
             command: false)
-
-      def self.default_config(config)
-      end
+      route(/^tw(?:eet|itter)?\s+(\w+)/i, :user_tweet, command: true,
+            help: {t("help.tweeta_key") => t("tweeta_value")})
 
       def initialize(robot)
         super
@@ -20,8 +25,29 @@ module Lita
       end
 
       def tweeta(response)
-        tweet = @client.status(response.matches.first.first.to_i)
-        response.reply "#{tweet.user.name} said: #{tweet.text}"
+        begin
+          tweet = @client.status(response.matches.first.first.to_i)
+        rescue Twitter::Error::NotFound
+          return
+        else
+          response.reply format(tweet)
+        end
+      end
+
+      def user_tweet(response)
+        username = response.matches.first.first
+        if @client.user?(username)
+          user = @client.user(username)
+          tweets = @client.user_timeline(user, {count: 1, include_rts: false})
+          unless tweets.empty?
+            response.reply format(tweets.first)
+          end
+        end
+      end
+
+      private
+      def format(tweet)
+        "\"#{tweet.text}\" --#{tweet.user.name}, #{tweet.created_at.strftime('%F')}"
       end
     end
 
