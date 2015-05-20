@@ -9,7 +9,7 @@ module Lita
       config :access_token, type: String, required: true
       config :access_token_secret, type: String, required: true
 
-      route(/https:\/\/twitter.com\/\w+\/status\/(\d+)/i, :tweeta,
+      route(/https:\/\/twitter\.com\/\w+\/status\/(\d+)/i, :tweeta,
             command: false)
       route(/^tw(?:eet|itter)?\s+(\w+)/i, :user_tweet, command: true,
             help: {t("help.tweeta_key") => t("help.tweeta_value")})
